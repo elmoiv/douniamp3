@@ -12,9 +12,7 @@ def get_hrefs(url):
     html = requests.get(url).content.decode()
     songs_devs = html_find_all(html)('div', {'class':'row', 'style':'font-size: 70%;'})
     for dev in songs_devs:
-        name = dev.find_all('div')[0].text
-        # Filter name
-        name = name[1:].strip()
+        name = dev.find_all('div')[0].text[1:].strip()
         url = 'https://douniamp3.co/' + dev.find_all('a')[0]['href']
         yield (name, url)
 
@@ -48,10 +46,8 @@ def main():
 ██║  ██║██║   ██║██╔██╗ ██║██║███████║    ██╔████╔██║██████╔╝ █████╔╝   ██║     ██║   ██║
 ██║  ██║██║   ██║██║╚██╗██║██║██╔══██║    ██║╚██╔╝██║██╔═══╝  ╚═══██╗   ██║     ██║   ██║
 ██████╔╝╚██████╔╝██║ ╚████║██║██║  ██║    ██║ ╚═╝ ██║██║     ██████╔╝██╗╚██████╗╚██████╔╝
-╚═════╝  ╚═════╝ ╚═╝  ╚═══╝╚═╝╚═╝  ╚═╝    ╚═╝     ╚═╝╚═╝     ╚═════╝ ╚═╝ ╚═════╝ ╚═════╝ 
-                                                                                         ''')
-    album_url = input('Enter Album URL: ')
-
+╚═════╝  ╚═════╝ ╚═╝  ╚═══╝╚═╝╚═╝  ╚═╝    ╚═╝     ╚═╝╚═╝     ╚═════╝ ╚═╝ ╚═════╝ ╚═════╝''')
+    album_url = input('\nEnter Album URL: ')
     # Get raw data (name, pop up url)
     print(f'\nExtracting Data from {album_url}')
     data = get_hrefs(album_url)
@@ -64,6 +60,5 @@ def main():
         download(direct_url, name + '.mp3')
         print()
 
-        
 if __name__ == '__main__':
     main()
