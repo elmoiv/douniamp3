@@ -13,7 +13,6 @@ def get_hrefs(url):
     songs_devs = html_find_all(html)('div', {'class':'row', 'style':'font-size: 70%;'})
     for dev in songs_devs:
         name = dev.find_all('div')[0].text
-        
         # Filter name
         name = name[1:].strip()
         url = 'https://douniamp3.co/' + dev.find_all('a')[0]['href']
@@ -21,7 +20,6 @@ def get_hrefs(url):
 
 def get_direct_url(url):
     r = requests.get(url)
-
     # data is decoded cuz it's hexa
     meta = html_find(r.content.decode())('meta')
     return meta['content'].split('URL=')[1]
@@ -60,14 +58,13 @@ def main():
     data = get_hrefs(album_url)
     for name, url in data:
         print(f'\nSearching for url in: {url}')
-
         # Extract direct url from pop up html
         direct_url = get_direct_url(url)
-
         # Download song with filtered name
         print(f'Downloading: {name}.mp3')
         download(direct_url, name + '.mp3')
         print()
 
+        
 if __name__ == '__main__':
     main()
