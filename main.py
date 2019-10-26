@@ -40,7 +40,6 @@ def download(url, filename):
                 file_down = round(downloaded / (1024**2))
                 sys.stdout.write('\r[{}{}] [{}/{} MB]'.format('█' * done, ' ' * (50-done), file_down, file_size))
                 sys.stdout.flush()
-    sys.stdout.write('\n')
 
 def main():
     print('''
