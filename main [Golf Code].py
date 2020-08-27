@@ -1,7 +1,7 @@
 import bs4, requests, sys
 
 get_direct_url = lambda url: bs4.BeautifulSoup(page, "html.parser").find(requests.get(url).content.decode())('meta')['content'].split('URL=')[1]
-get_hrefs = lambda url: [(dev.find_all('div')[0].text[1:].strip(), 'https://douniamp3.co/' + dev.find_all('a')[0]['href']) for dev in bs4.BeautifulSoup(page, "html.parser").findAll(requests.get(url).content.decode())('div', {'class':'row', 'style':'font-size: 70%;'})]
+get_hrefs = lambda url: [(dev.find_all('div')[0].text[1:].strip(), 'https://ranatiphone.com/' + dev.find_all('a')[0]['href']) for dev in bs4.BeautifulSoup(page, "html.parser").findAll(requests.get(url).content.decode())('div', {'class':'row', 'style':'font-size: 70%;'})]
 def download(url, filename):
     with open(filename, 'wb') as f:
         rsp = requests.get(url, stream=True); total = rsp.headers.get('content-length')
