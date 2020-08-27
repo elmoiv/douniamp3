@@ -13,7 +13,7 @@ def get_hrefs(url):
     songs_devs = html_find_all(html)('div', {'class':'row', 'style':'font-size: 70%;'})
     for dev in songs_devs:
         name = dev.find_all('div')[0].text[1:].strip()
-        url = 'https://douniamp3.co/' + dev.find_all('a')[0]['href']
+        url = 'https://ranatiphone.com/' + dev.find_all('a')[0]['href']
         yield (name, url)
 
 def get_direct_url(url):
