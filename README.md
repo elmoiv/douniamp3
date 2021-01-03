@@ -1,5 +1,5 @@
 # douniamp3
-Small and neat script to download albums from ranatiphone.com (Formerly called douniamp3.co)
+Small and neat script to download albums from ranatiphone.com *(Formerly called douniamp3.co)*
 
 ## Usage
 
